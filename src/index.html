@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <title>Place4me</title>
+  <base href="/">
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap" rel="stylesheet">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+</head>
+<body>
+  <app-root></app-root>
+  <script>
+      function toggleNav() {
+
+          var element = document.getElementById("mySidebar");
+          if (element.className == "sidebar close") {
+              element.className = "sidebar open";
+              document.getElementById("main").className = "close";
+              localStorage.setItem("sideBarClass", "sidebar open");
+              localStorage.setItem("mainClass", "close");
+
+          } else {
+              element.className = "sidebar close";
+              document.getElementById("main").className = "open";
+              localStorage.setItem("sideBarClass", "sidebar close");
+              localStorage.setItem("mainClass", "open");
+
+          }
+
+
+      }
+  </script>
+</body>
+</html>

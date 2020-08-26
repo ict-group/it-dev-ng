@@ -1,0 +1,172 @@
+<p-confirmDialog header="Confirmation" acceptLabel="OK" [closable]="false" [style]="{width: '50vw'}"></p-confirmDialog>
+
+<div class="top-wrapper" *ngIf="element">
+  <div class="ui-g">
+    <div class="ui-g-6">
+      <h1 *ngIf="element.uuid">Device Edit</h1>
+      <h1 *ngIf="!element.uuid">New Device</h1>
+    </div>
+    <div class="ui-g-6">
+      <button pButton type="button" class="pull-right ui-button-primary" icon="fa fa-warning" label="Undo"
+              (click)="goToList()"></button>
+
+      <ng-container>
+        <button pButton type="button" *ngIf="!element.uuid" (click)="save()" icon="pi pi-save"
+                [disabled]="!theform.form.valid" label="Save" class="pull-right ui-button-secondary"></button>
+
+        <button pButton type="button" *ngIf="element.uuid" class="pull-right ui-button-secondary" icon="fa fa-save"
+                [disabled]="!theform.form.valid" label="Update" (click)="update()"></button>
+
+        <button pButton type="button" *ngIf="element.uuid" class="pull-right ui-button-danger" icon="fa fa-trash"
+                [disabled]="!theform.form.valid" label="Delete" (click)="confirmDelete()"></button>
+      </ng-container>
+    </div>
+  </div>
+</div>
+
+<div class="wrapper">
+
+
+  <div class="ui-g">
+    <div class="ui-g-12">
+
+      <form #theform="ngForm">
+
+        <p-tabView *ngIf="element">
+          <p-tabPanel header="Jolt Configuration">
+            <div class="ui-g">
+              <div class="ui-g-12 clearfix">
+                <div class="ui-g-12">
+
+                  <div class="form-group clearfix ui-g">
+                    <label class="label-text ui-g-3">Name (*)</label>
+
+                    <div class="ui-g-9">
+                      <input type="text" pInputText placeholder="Name" id="name" required [(ngModel)]="element.name"
+                             name="nome" #name="ngModel">
+
+                      <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+                        Name is required!
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="form-group clearfix ui-g">
+                    <label class="label-text ui-g-3" for="extra_id">Device id (*)</label>
+                    <div class="ui-g-9">
+                      <input type="text" pInputText placeholder="device_id" id="device_id"
+                             [(ngModel)]="element.device_configuration_uuid" name="device_id">
+                    </div>
+                  </div>
+
+                  <div class="form-group clearfix ui-g">
+                    <label class="label-text ui-g-3" for="extra_id">Type (*)</label>
+                    <div class="ui-g-9">
+                      <input type="text" pInputText placeholder="type" id="type"
+                             [(ngModel)]="element.description" name="type">
+                    </div>
+                  </div>
+
+
+                  <div class="form-group clearfix ui-g">
+                    <label class="label-text ui-g-3" for="extra_id">Extra id</label>
+                    <div class="ui-g-9">
+                      <input type="text" pInputText placeholder="extra_id" id="extra_id"
+                             [(ngModel)]="element.name" name="extra_id">
+                    </div>
+                  </div>
+
+                  <div class="form-group clearfix ui-g" *ngIf="element.uuid">
+                    <label class="label-text ui-g-3" for="hostname">Host name</label>
+                    <div class="ui-g-9">
+                      <input type="text" pInputText placeholder="hostname" id="hostname"
+                             [(ngModel)]="element.name" name="hostname">
+                    </div>
+                  </div>
+
+                  <div class="form-group clearfix ui-g" *ngIf="element.uuid">
+                    <label class="label-text ui-g-3" for="primary_key">Primary key</label>
+                    <div class="ui-g-9">
+                      <input type="text" pInputText placeholder="primary_key" id="primary_key"
+                             [(ngModel)]="element.name" name="primary_key">
+                    </div>
+
+                  </div>
+                  <div class="form-group clearfix ui-g" *ngIf="element.uuid">
+                    <label class="label-text ui-g-3" for="secondary_key">Secondary key</label>
+                    <div class="ui-g-9">
+                      <input type="text" pInputText placeholder="secondary_key" id="secondary_key"
+                             [(ngModel)]="element.ble_code1" name="secondary_key">
+                    </div>
+                  </div>
+
+                  <div class="form-group clearfix ui-g">
+                    <label class="label-text ui-g-3" for="commissionUuid">Commission uuid</label>
+                    <div class="ui-g-9">
+                      <input type="text" pInputText placeholder="commissionUuid" id="commissionUuid"
+                             [(ngModel)]="element.ble_code2" name="commissionUuid">
+                    </div>
+                  </div>
+
+                  <div class="form-group clearfix ui-g">
+                    <label class="label-text ui-g-3" for="iot_configuration">Iot configuration</label>
+                    <div class="ui-g-9">
+                      <p-dropdown id="iot_configuration" name="iot_configuration" [options]="iotconfigurations"
+                                  [(ngModel)]="element.ble_code3" required>
+                      </p-dropdown>
+                    </div>
+                  </div>
+
+                  <div class="form-group clearfix ui-g">
+                    <label class="label-text ui-g-3" for="publishInterval">Publish interval</label>
+                    <div class="ui-g-9">
+                      <input type="text" pInputText placeholder="publishInterval" id="publishInterval"
+                             [(ngModel)]="element.ble_code4" name="publishInterval">
+                    </div>
+                  </div>
+
+                  <div class="form-group clearfix ui-g">
+                    <label class="label-text ui-g-3" for="bleScanInterval">Ble scan interval</label>
+                    <div class="ui-g-9">
+                      <input type="text" pInputText placeholder="bleScanInterval" id="bleScanInterval"
+                             [(ngModel)]="element.ble_code5" name="bleScanInterval">
+                    </div>
+                  </div>
+
+                  <div class="form-group clearfix ui-g">
+                    <label class="label-text ui-g-3" for="wifiScanInterval">Wifi scan interval</label>
+                    <div class="ui-g-9">
+                      <input type="text" pInputText placeholder="wifiScanInterval" id="wifiScanInterval"
+                             [(ngModel)]="element.note" name="wifiScanInterval">
+                    </div>
+                  </div>
+
+                  <div class="form-group clearfix ui-g" *ngIf="false">
+                    <label for="active" class="label-text ui-g-3">Active</label>
+                    <div class="ui-g-9">
+                      <p-checkbox id="active" name="active" binary="true"
+                                  [(ngModel)]="element.active"></p-checkbox>
+                    </div>
+                  </div>
+
+                  <div class="form-group clearfix ui-g">
+                    <label for="hub_active" class="label-text ui-g-3">Hub active</label>
+                    <div class="ui-g-9">
+                      <p-checkbox id="hub_active" name="hub_active" binary="true"
+                                  [(ngModel)]="element.disable_alert_date"></p-checkbox>
+                    </div>
+                  </div>
+                  {{element | json}}
+
+                </div>
+              </div>
+            </div>
+          </p-tabPanel>
+
+        </p-tabView>
+      </form>
+
+    </div>
+  </div>
+</div>

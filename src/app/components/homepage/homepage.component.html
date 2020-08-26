@@ -1,0 +1,42 @@
+<!-- <div class="top-wrapper" *permit="'ANY'"> -->
+<div class="top-wrapper">
+  <div class="ui-g">
+    <div class="ui-g-6">
+      <h1>Welcome</h1>
+    </div>
+    <div class="ui-g-6">
+    </div>
+  </div>
+</div>
+
+
+<div class="wrapper">
+  <div class="ui-g">
+    <div class="ui-g-6" *ngFor="let page of pages">
+
+      <p-card class="menu-item-wrapper" styleClass="{{page.style}}" routerLink="{{page.link}}">
+        <div class="ui-g">
+          <div class="ui-g-9">
+            <div class="menu-items">
+              <h3>{{page.name}}</h3>
+            </div>
+          </div>
+          <div class="ui-g-3">
+
+            <div class="menu-item-icon">
+              <i aria-hidden="true" class="{{page.icon}}"></i>
+            </div>
+          </div>
+        </div>
+      </p-card>
+    </div>
+
+  </div>
+
+
+</div>
+
+
+
+
+
