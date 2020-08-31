@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "place4me-ng": {
+    "it-dev-ng": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/place4me-ng",
+            "outputPath": "dist/it-dev-ng",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -69,18 +69,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "place4me-ng:build"
+            "browserTarget": "it-dev-ng:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "place4me-ng:build:production"
+              "browserTarget": "it-dev-ng:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "place4me-ng:build"
+            "browserTarget": "it-dev-ng:build"
           }
         },
         "test": {
@@ -124,18 +124,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "place4me-ng:serve"
+            "devServerTarget": "it-dev-ng:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "place4me-ng:serve:production"
+              "devServerTarget": "it-dev-ng:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "place4me-ng",
+  "defaultProject": "it-dev-ng",
   "cli": {
     "analytics": "e2f29065-ad78-4a71-aea9-c77bd6bac037"
   }
