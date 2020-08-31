@@ -2,13 +2,13 @@
 import {KeycloakConfig} from 'keycloak-angular';
 
 export const keycloakConfig: KeycloakConfig = {
-  url: 'https://sso.bridge129.com/auth',
-  realm: 'place4me',
-  clientId: 'place4me-ng'
+  url: 'https://sso.e-g.gs/auth',
+  realm: 'it-dev',
+  clientId: 'it-dev-ng'
 };
 
 export const environment = {
   production: true,
-  apiUrl: 'https://api.place4me.it',
+  apiUrl: 'https://api.it-it.dev',
   keycloak: keycloakConfig
 };
