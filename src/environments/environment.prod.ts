@@ -3,7 +3,7 @@ import {KeycloakConfig} from 'keycloak-angular';
 
 export const keycloakConfig: KeycloakConfig = {
   url: 'https://sso.e-g.gs/auth',
-  realm: 'it-dev',
+  realm: 'it_dev',
   clientId: 'it-dev-ng'
 };
 
