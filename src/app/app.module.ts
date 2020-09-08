@@ -22,10 +22,20 @@ import {DeviceListComponent} from './components/device/device-list.component';
 import {DeviceEditComponent} from './components/device/device-edit.component';
 import {SearchTagsComponent} from './common/search-tags.component';
 import {OutputPrintable} from './pipes/output-printable';
-import {CheckboxModule, ConfirmationService, ConfirmDialogModule, MessageService} from 'primeng';
+import {
+  CalendarModule,
+  CheckboxModule,
+  ConfirmationService,
+  ConfirmDialogModule,
+  InputMaskModule,
+  MessageService
+} from 'primeng';
 import {KeycloakService, KeycloakAngularModule} from 'keycloak-angular';
 import {keycloakConfig} from '../environments/environment';
 import {DeviceViewComponent} from './components/device/device-view.component';
+import {DeveloperListComponent} from './components/developers/developer-list.component';
+import {DeveloperEditComponent} from './components/developers/developer-edit.component';
+import { DeveloperViewComponent } from './components/developers/developer-view.component';
 
 export function initializer(keycloak: KeycloakService): () => Promise<any> {
   return (): Promise<any> => keycloak.init({config: keycloakConfig});
@@ -40,6 +50,9 @@ export function initializer(keycloak: KeycloakService): () => Promise<any> {
     SearchTagsComponent,
     OutputPrintable,
     DeviceViewComponent,
+    DeveloperListComponent,
+    DeveloperEditComponent,
+    DeveloperViewComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,7 +71,9 @@ export function initializer(keycloak: KeycloakService): () => Promise<any> {
     FormsModule,
     ConfirmDialogModule,
     CheckboxModule,
-    KeycloakAngularModule
+    KeycloakAngularModule,
+    CalendarModule,
+    InputMaskModule
   ],
   providers: [
     MessageService,
