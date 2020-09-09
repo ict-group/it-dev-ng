@@ -5,6 +5,9 @@ import {DeviceListComponent} from './components/device/device-list.component';
 import {DeviceEditComponent} from './components/device/device-edit.component';
 import {AppAuthGuard} from './app.authguard';
 import {DeviceViewComponent} from './components/device/device-view.component';
+import {DeveloperListComponent} from './components/developers/developer-list.component';
+import {DeveloperEditComponent} from "./components/developers/developer-edit.component";
+import {DeveloperViewComponent} from "./components/developers/developer-view.component";
 
 
 const routes: Routes = [
@@ -19,6 +22,16 @@ const routes: Routes = [
       {path: 'view/:id', component: DeviceViewComponent, canActivate: [AppAuthGuard]},
       {path: 'edit/:id', component: DeviceEditComponent, canActivate: [AppAuthGuard]},
       {path: 'new', component: DeviceEditComponent, canActivate: [AppAuthGuard]},
+    ]
+  },
+  {
+    path: 'developers',
+    canActivate: [AppAuthGuard],
+    children: [
+      {path: '', component: DeveloperListComponent, canActivate: [AppAuthGuard]},
+      {path: 'new', component: DeveloperEditComponent, canActivate: [AppAuthGuard]},
+      {path: 'edit/:id', component: DeveloperEditComponent, canActivate: [AppAuthGuard]},
+      {path: 'view/:id', component: DeveloperViewComponent, canActivate: [AppAuthGuard]}
     ]
   }
 ];
