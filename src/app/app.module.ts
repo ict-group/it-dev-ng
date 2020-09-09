@@ -36,6 +36,9 @@ import {DeviceViewComponent} from './components/device/device-view.component';
 import {DeveloperListComponent} from './components/developers/developer-list.component';
 import {DeveloperEditComponent} from './components/developers/developer-edit.component';
 import { DeveloperViewComponent } from './components/developers/developer-view.component';
+import { BlogPostListComponent } from './components/blogposts/blog-post-list.component';
+import { BlogPostViewComponent } from './components/blogposts/blog-post-view.component';
+import { BlogPostEditComponent } from './components/blogposts/blog-post-edit.component';
 
 export function initializer(keycloak: KeycloakService): () => Promise<any> {
   return (): Promise<any> => keycloak.init({config: keycloakConfig});
@@ -53,6 +56,9 @@ export function initializer(keycloak: KeycloakService): () => Promise<any> {
     DeveloperListComponent,
     DeveloperEditComponent,
     DeveloperViewComponent,
+    BlogPostListComponent,
+    BlogPostViewComponent,
+    BlogPostEditComponent,
   ],
   imports: [
     BrowserModule,

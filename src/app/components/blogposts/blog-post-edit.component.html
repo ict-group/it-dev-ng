@@ -1,0 +1,107 @@
+<p-confirmDialog header="Confirmation" acceptLabel="OK" [closable]="false" [style]="{width: '50vw'}"></p-confirmDialog>
+
+<div class="top-wrapper" *ngIf="element">
+  <div class="ui-g">
+    <div class="ui-g-6">
+      <h1 *ngIf="element.uuid">Blogpost Edit</h1>
+      <h1 *ngIf="!element.uuid">New Blogpost</h1>
+    </div>
+    <div class="ui-g-6">
+      <button pButton type="button" class="pull-right ui-button-primary" icon="fa fa-warning" label="Undo"
+              (click)="goToList()"></button>
+
+      <ng-container>
+        <button pButton type="button" *ngIf="!element.uuid" (click)="save()" icon="pi pi-save"
+                [disabled]="!theform.form.valid" label="Save" class="pull-right ui-button-secondary"></button>
+
+        <button pButton type="button" *ngIf="element.uuid" class="pull-right ui-button-secondary" icon="fa fa-save"
+                [disabled]="!theform.form.valid" label="Update" (click)="update()"></button>
+
+        <button pButton type="button" *ngIf="element.uuid" class="pull-right ui-button-danger" icon="fa fa-trash"
+                [disabled]="!theform.form.valid" label="Delete" (click)="confirmDelete()"></button>
+      </ng-container>
+    </div>
+  </div>
+</div>
+
+<div class="wrapper">
+  <div class="ui-g">
+    <div class="ui-g-12">
+
+      <form #theform="ngForm">
+        <p-tabView *ngIf="element">
+          <p-tabPanel header="Blogpost Configuration">
+            <div class="ui-g">
+              <div class="ui-g-12 clearfix">
+                <div class="ui-g-12">
+                  <div class="form-group clearfix ui-g">
+                    <label class="label-text ui-g-3">Type (*)</label>
+                    <div class="ui-g-9">
+                      <input type="text" pInputText placeholder="Type" id="type" required [(ngModel)]="element.type"
+                             name="type" #type="ngModel">
+
+                      <div [hidden]="type.valid || type.pristine" class="alert alert-danger">
+                        Type is required!
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group clearfix ui-g">
+                    <label class="label-text ui-g-3">Title (*)</label>
+                    <div class="ui-g-9">
+                      <input type="text" pInputText placeholder="Title" id="title" required [(ngModel)]="element.title"
+                             name="title" #title="ngModel">
+
+                      <div [hidden]="title.valid || title.pristine" class="alert alert-danger">
+                        Title is required!
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group clearfix ui-g">
+                    <label class="label-text ui-g-3">Author (*)</label>
+                    <div class="ui-g-9">
+                      <input type="text" pInputText placeholder="Author" id="author"
+                             [(ngModel)]="element.author" name="biography" #author="ngModel">
+
+                      <div [hidden]="author.valid || author.pristine" class="alert alert-danger">
+                        Author is required!
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group clearfix ui-g">
+                    <label class="label-text ui-g-3">Content</label>
+                    <div class="ui-g-9">
+                      <input type="text" pInputText placeholder="Content" id="content" required
+                             [(ngModel)]="element.content" name="content" #content="ngModel">
+                    </div>
+                  </div>
+
+                  <div class="form-group clearfix ui-g">
+                    <label class="label-text ui-g-3">Tags</label>
+                    <div class="ui-g-9">
+                      <input type="text" pInputText placeholder="Tags" id="tags" [(ngModel)]="element.tags" name="tags"
+                             #tags="ngModel">
+                    </div>
+                  </div>
+
+                  <div class="form-group clearfix ui-g">
+                    <label class="label-text ui-g-3">Video url</label>
+                    <div class="ui-g-9">
+                      <input type="text" pInputText placeholder="Video url" id="video_url"
+                             [(ngModel)]="element.video_url" name="lastCompany" #video_url="ngModel">
+                    </div>
+                  </div>
+
+                  {{element | json}}
+                </div>
+              </div>
+            </div>
+          </p-tabPanel>
+        </p-tabView>
+      </form>
+
+    </div>
+  </div>
+</div>

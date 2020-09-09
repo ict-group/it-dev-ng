@@ -1,34 +1,35 @@
 <p-overlayPanel #op [dismissable]="true" appendTo="body" styleClass="clearfix">
   <div class="form-group cleafix">
-    <label for="developer_username">Developer username</label>
-    <input id="developer_username" [(ngModel)]="service.search.like.username" type="text" size="30" pInputText>
+    <label for="blogpost_title">Blogpost title</label>
+    <input id="blogpost_title" [(ngModel)]="service.search.like.title" type="text" size="30" pInputText>
   </div>
 
   <div class="form-group cleafix">
-    <label for="name">Name</label>
-    <input id="name" [(ngModel)]="service.search.like.name" type="text" size="30" pInputText>
+    <label for="type">Type</label>
+    <input id="type" [(ngModel)]="service.search.like.type" type="text" size="30" pInputText>
   </div>
 
   <div class="form-group cleafix">
-    <label for="surname">Surname</label>
-    <input id="surname" [(ngModel)]="service.search.like.surname" type="text" size="30" pInputText>
+    <label for="author">Blogpost Author</label>
+    <input id="author" [(ngModel)]="service.search.like.author" type="text" size="30" pInputText>
   </div>
 
   <div class="form-group cleafix">
-    <label for="developer_tags">Tags</label>
-    <input id="developer_tags" [(ngModel)]="service.search.like.tags" type="text" size="30" pInputText>
+    <label for="blogpost_tags">Tags</label>
+    <input id="blogpost_tags" [(ngModel)]="service.search.like.tags" type="text" size="30" pInputText>
   </div>
 
   <div class="form-group cleafix">
     <div class="ui-g">
       <div class="ui-g-6">
         <button type="button" pButton class="btn-block ui-button-secondary" label="search" icon="fa fa-search"
-                (click)="reload(datatable); op.hide()"></button>
+                (click)="reload(datatable); op.hide()">
+        </button>
       </div>
       <div class="ui-g-6">
         <button type="button" pButton class="btn-block" label="reset" icon="fa fa-search"
-                (click)="reset(datatable)"></button>
-
+                (click)="reset(datatable)">
+        </button>
       </div>
     </div>
   </div>
@@ -37,11 +38,12 @@
 <div class="top-wrapper">
   <div class="ui-g">
     <div class="ui-g-6">
-      <h1>Developers</h1>
+      <h1>Blog Posts</h1>
     </div>
     <div class="ui-g-6">
-      <button type="button" class="pull-right ui-button-secondary" pButton [routerLink]="['/developers/new']"
-              icon="pi pi-plus" label="New"></button>
+      <button type="button" class="pull-right ui-button-secondary" pButton [routerLink]="['/blogposts/new']"
+              icon="pi pi-plus" label="New">
+      </button>
     </div>
   </div>
 </div>
@@ -67,27 +69,31 @@
                  #datatable>
           <ng-template pTemplate="header" class="search-filter">
             <tr class="sort-header">
-              <th pResizableColumn [pSortableColumn]="'username'">username
-                <p-sortIcon [field]="'username'" width="150px"></p-sortIcon>
+              <th pResizableColumn [pSortableColumn]="'type'">type
+                <p-sortIcon [field]="'type'" width="150px"></p-sortIcon>
               </th>
-              <th pResizableColumn [pSortableColumn]="'name'">name
-                <p-sortIcon [field]="'name'" width="150px"></p-sortIcon>
+              <th pResizableColumn [pSortableColumn]="'title'">title
+                <p-sortIcon [field]="'title'" width="150px"></p-sortIcon>
               </th>
-              <th pResizableColumn [pSortableColumn]="'surname'">surname
-                <p-sortIcon [field]="'surname'" width="150px"></p-sortIcon>
+              <th pResizableColumn [pSortableColumn]="'author'">author
+                <p-sortIcon [field]="'author'" width="150px"></p-sortIcon>
               </th>
               <th pResizableColumn [pSortableColumn]="'tags'">tags
                 <p-sortIcon [field]="'tags'" width="150px"></p-sortIcon>
+              </th>
+              <th pResizableColumn [pSortableColumn]="'insert_date'">insert date
+                <p-sortIcon [field]="'insert_date'" width="150px"></p-sortIcon>
               </th>
               <th></th>
             </tr>
           </ng-template>
           <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
             <tr>
-              <td class="ui-resizable-column">{{rowData.username}}</td>
-              <td class="ui-resizable-column">{{rowData.name}}</td>
-              <td class="ui-resizable-column">{{rowData.surname}}</td>
+              <td class="ui-resizable-column">{{rowData.type}}</td>
+              <td class="ui-resizable-column">{{rowData.title}}</td>
+              <td class="ui-resizable-column">{{rowData.author}}</td>
               <td class="violet ui-resizable-column">{{rowData.tags}}</td>
+              <td class="violet ui-resizable-column">{{rowData.insert_date}}</td>
               <td class="ui-resizable-column" width="250px">
                 <button type="button" pButton class="ui-button-primary pull-right" icon="fa fa-eye"
                         (click)="view(rowData)"></button>
