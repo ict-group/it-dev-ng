@@ -40,4 +40,12 @@ export class DeveloperEditComponent extends AbstractEditComponent<Developer> {
       }
     });
   }
+
+  onFileSelect(event) {
+    console.log(event.files[0])
+  }
+
+  onFileUpload(event) {
+    console.log(event.files[0])
+  }
 }

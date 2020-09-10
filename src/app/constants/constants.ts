@@ -5,5 +5,5 @@ export const BLOGPOSTS_PATH = environment.apiUrl + '/api/v1/blogposts';
 
 export const PAGES = [
   {name: 'Developers', link: '/developers', icon: 'fa fa-file-code-o', style: 'default'},
-  {name: 'Blogpost', link: '/blogpost', icon: 'fa fa-picture-o', style: 'default'}
+  {name: 'Blogpost', link: '/blogposts', icon: 'fa fa-picture-o', style: 'default'}
 ];
