@@ -1,6 +1,7 @@
 import {environment} from '../../environments/environment';
 
 export const DEVELOPERS_PATH = environment.apiUrl + '/api/v1/developers';
+export const BLOGPOSTS_PATH = environment.apiUrl + '/api/v1/blogposts';
 
 export const PAGES = [
   {name: 'Developers', link: '/developers', icon: 'fa fa-file-code-o', style: 'default'},

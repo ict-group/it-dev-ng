@@ -1,0 +1,138 @@
+<div class="top-wrapper">
+  <div class="ui-g">
+    <div class="ui-g-6">
+      <h1>Blogpost Details</h1>
+    </div>
+    <div class="ui-g-6">
+      <button pButton type="button" routerLink="/blogposts" class="pull-right ui-button-primary"
+              icon="fa fa-chevron-left" label="Back"></button>
+    </div>
+  </div>
+</div>
+
+<div class="wrapper">
+  <div class="ui-g">
+    <div class="ui-g-12">
+
+      <p-tabView>
+        <p-tabPanel header="Developer">
+          <div class="ui-g">
+            <div class="ui-g-12">
+
+              <div class="form-group list clearfix">
+                <div class="ui-g">
+                  <div class="ui-g-12">
+                    <label class="label-text ui-g-2">Uuid</label>
+                    <div class="ui-g-10">
+                      <strong>{{element?.uuid}}</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group list clearfix">
+                <div class="ui-g">
+                  <div class="ui-g-12">
+                    <label class="label-text ui-g-2">Type</label>
+                    <div class="ui-g-10">
+                      <strong>{{element?.type}}</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group list clearfix">
+                <div class="ui-g">
+                  <div class="ui-g-12">
+                    <label class="label-text ui-g-2">Title</label>
+                    <div class="ui-g-10">
+                      <strong>{{element?.title}}</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group list clearfix">
+                <div class="ui-g">
+                  <div class="ui-g-12">
+                    <label class="label-text ui-g-2">Content</label>
+                    <div class="ui-g-10">
+                      <strong>{{element?.content}}</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group list clearfix">
+                <div class="ui-g">
+                  <div class="ui-g-12">
+                    <label class="label-text ui-g-2">Author</label>
+                    <div class="ui-g-10">
+                      <strong>{{element?.author}}</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group list clearfix">
+                <div class="ui-g">
+                  <div class="ui-g-12">
+                    <label class="label-text ui-g-2">Tags</label>
+                    <div class="ui-g-10">
+                      <strong>{{element?.tags}}</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group list clearfix">
+                <div class="ui-g">
+                  <div class="ui-g-12">
+                    <label class="label-text ui-g-2">Video</label>
+                    <div class="ui-g-10">
+                      <strong>{{element?.video_url}}</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group list clearfix">
+                <div class="ui-g">
+                  <div class="ui-g-12">
+                    <label class="label-text ui-g-2">Developer uuid</label>
+                    <div class="ui-g-10">
+                      <strong class="pre clearfix">{{element?.developer_uuid}}</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group list clearfix">
+                <div class="ui-g">
+                  <div class="ui-g-12">
+                    <label class="label-text ui-g-2">Insert date</label>
+                    <div class="ui-g-10">
+                      <strong class="pre clearfix">{{element?.insert_date}}</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group clearfix">
+                <div class="ui-g">
+                  <div class="ui-g-12">
+                    <label class="label-text ui-g-2">Update date</label>
+                    <div class="ui-g-10">
+                      <strong class="pre clearfix">{{element?.update_date}}</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </p-tabPanel>
+      </p-tabView>
+
+    </div>
+  </div>
+</div>

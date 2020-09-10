@@ -1,0 +1,117 @@
+<p-overlayPanel #op [dismissable]="true" appendTo="body" styleClass="clearfix">
+  <div class="form-group cleafix">
+    <label for="blogpost_title">Blogpost title</label>
+    <input id="blogpost_title" [(ngModel)]="service.search.like.title" type="text" size="30"
+           pInputText>
+  </div>
+
+  <div class="form-group cleafix">
+    <label for="type">Type</label>
+    <input id="type" [(ngModel)]="service.search.like.type" type="text" size="30" pInputText>
+  </div>
+
+  <div class="form-group cleafix">
+    <label for="author">Blogpost Author</label>
+    <input id="author" [(ngModel)]="service.search.like.author" type="text" size="30" pInputText>
+  </div>
+
+  <div class="form-group cleafix">
+    <label for="blogpost_tags">Tags</label>
+    <input id="blogpost_tags" [(ngModel)]="service.search.like.tags" type="text" size="30"
+           pInputText>
+  </div>
+
+  <div class="form-group cleafix">
+    <div class="ui-g">
+      <div class="ui-g-6">
+        <button type="button" pButton class="btn-block ui-button-secondary" label="search"
+                icon="fa fa-search"
+                (click)="reload(datatable); op.hide()">
+        </button>
+      </div>
+      <div class="ui-g-6">
+        <button type="button" pButton class="btn-block" label="reset" icon="fa fa-search"
+                (click)="reset(datatable)">
+        </button>
+      </div>
+    </div>
+  </div>
+</p-overlayPanel>
+
+<div class="top-wrapper">
+  <div class="ui-g">
+    <div class="ui-g-6">
+      <h1>Blog Posts</h1>
+    </div>
+    <div class="ui-g-6">
+      <button type="button" class="pull-right ui-button-secondary" pButton
+              [routerLink]="['/blogposts/new']"
+              icon="pi pi-plus" label="New">
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="wrapper">
+  <div class="ui-g">
+    <div class="ui-g-12">
+      <div class="filter-wrapper clearfix">
+        <a (click)="op.toggle($event)" class="btn-filter" appendTo="body">
+          <i class="fa fa-sliders" aria-hidden="true"></i> Search
+        </a>
+        <app-search-tags [search]="service.search" [hiddenFields]="hiddenFields" [labels]="labels"
+                         (cancel)="reload(datatable)"></app-search-tags>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-g">
+    <div class="ui-g-12">
+      <p-card>
+        <p-table [value]="model" [lazy]="true" (onLazyLoad)="lazyLoad($event)" [paginator]="true"
+                 [responsive]="true"
+                 [rows]="service.search.pageSize" [totalRecords]="service.listSize"
+                 [resizableColumns]="true"
+                 #datatable>
+          <ng-template pTemplate="header" class="search-filter">
+            <tr class="sort-header">
+              <th pResizableColumn [pSortableColumn]="'type'">type
+                <p-sortIcon [field]="'type'" width="150px"></p-sortIcon>
+              </th>
+              <th pResizableColumn [pSortableColumn]="'title'">title
+                <p-sortIcon [field]="'title'" width="150px"></p-sortIcon>
+              </th>
+              <th pResizableColumn [pSortableColumn]="'author'">author
+                <p-sortIcon [field]="'author'" width="150px"></p-sortIcon>
+              </th>
+              <th pResizableColumn [pSortableColumn]="'tags'">tags
+                <p-sortIcon [field]="'tags'" width="150px"></p-sortIcon>
+              </th>
+              <th pResizableColumn [pSortableColumn]="'insert_date'">insert date
+                <p-sortIcon [field]="'insert_date'" width="150px"></p-sortIcon>
+              </th>
+              <th></th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+            <tr>
+              <td class="ui-resizable-column">{{rowData.type}}</td>
+              <td class="ui-resizable-column">{{rowData.title}}</td>
+              <td class="ui-resizable-column">{{rowData.author}}</td>
+              <td class="violet ui-resizable-column">{{rowData.tags}}</td>
+              <td class="violet ui-resizable-column">{{rowData.insert_date}}</td>
+              <td class="ui-resizable-column" width="250px">
+                <button type="button" pButton class="ui-button-primary pull-right" icon="fa fa-eye"
+                        (click)="view(rowData)"></button>
+                <button type="button" pButton class="ui-button-secondary pull-right"
+                        icon="fa fa-pencil"
+                        (click)="edit(rowData)">
+                </button>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </p-card>
+    </div>
+  </div>
+</div>
