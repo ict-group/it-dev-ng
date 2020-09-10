@@ -18,8 +18,6 @@ import {HttpClientModule} from '@angular/common/http';
 import {CommonModule} from '@angular/common';
 import {MySharedModule} from './modules/myshared.module';
 import {HomepageComponent} from './components/homepage/homepage.component';
-import {DeviceListComponent} from './components/device/device-list.component';
-import {DeviceEditComponent} from './components/device/device-edit.component';
 import {SearchTagsComponent} from './common/search-tags.component';
 import {OutputPrintable} from './pipes/output-printable';
 import {
@@ -32,7 +30,6 @@ import {
 } from 'primeng';
 import {KeycloakService, KeycloakAngularModule} from 'keycloak-angular';
 import {keycloakConfig} from '../environments/environment';
-import {DeviceViewComponent} from './components/device/device-view.component';
 import {DeveloperListComponent} from './components/developers/developer-list.component';
 import {DeveloperEditComponent} from './components/developers/developer-edit.component';
 import { DeveloperViewComponent } from './components/developers/developer-view.component';
@@ -48,11 +45,8 @@ export function initializer(keycloak: KeycloakService): () => Promise<any> {
   declarations: [
     AppComponent,
     HomepageComponent,
-    DeviceListComponent,
-    DeviceEditComponent,
     SearchTagsComponent,
     OutputPrintable,
-    DeviceViewComponent,
     DeveloperListComponent,
     DeveloperEditComponent,
     DeveloperViewComponent,
