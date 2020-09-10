@@ -40,7 +40,7 @@
               <div class="ui-g-12 clearfix">
                 <div class="ui-g-12">
                   <div class="form-group clearfix ui-g">
-                    <label class="label-text ui-g-3">Username (*)</label>
+                    <label class="label-text ui-g-3" for="username">Username (*)</label>
                     <div class="ui-g-9">
                       <input type="text" pInputText placeholder="Username" id="username" required
                              [(ngModel)]="element.username" name="username" #username="ngModel">
@@ -53,7 +53,7 @@
                   </div>
 
                   <div class="form-group clearfix ui-g">
-                    <label class="label-text ui-g-3">Name (*)</label>
+                    <label class="label-text ui-g-3" for="name">Name (*)</label>
                     <div class="ui-g-9">
                       <input type="text" pInputText placeholder="Name" id="name" required
                              [(ngModel)]="element.name" name="nome" #name="ngModel">
@@ -65,7 +65,7 @@
                   </div>
 
                   <div class="form-group clearfix ui-g">
-                    <label class="label-text ui-g-3">Surname (*)</label>
+                    <label class="label-text ui-g-3" for="surname">Surname (*)</label>
                     <div class="ui-g-9">
                       <input type="text" pInputText placeholder="Surname" id="surname" required
                              [(ngModel)]="element.surname" name="surname" #surname="ngModel">
@@ -79,21 +79,22 @@
                   <div class="form-group clearfix ui-g">
                     <label class="label-text ui-g-3">Tags</label>
                     <div class="ui-g-9">
-                      <input type="text" pInputText placeholder="Tags" id="tags"
-                             [(ngModel)]="element.tags" name="tags" #tags="ngModel">
+                      <p-chips placeholder="Tags" id="tags" [(ngModel)]="element.tags" separator=","
+                               name="tags" #tags="ngModel"></p-chips>
                     </div>
                   </div>
 
                   <div class="form-group clearfix ui-g">
-                    <label class="label-text ui-g-3">Biography</label>
+                    <label class="label-text ui-g-3">Companies</label>
                     <div class="ui-g-9">
-                      <input type="text" pInputText placeholder="Biography" id="biography"
-                             [(ngModel)]="element.biography" name="biography" #biography="ngModel">
+                      <p-chips placeholder="Companies" id="companies"
+                               [(ngModel)]="element.companies" separator=";"
+                               name="companies" #companies="ngModel"></p-chips>
                     </div>
                   </div>
 
                   <div class="form-group clearfix ui-g">
-                    <label class="label-text ui-g-3">Last Company</label>
+                    <label class="label-text ui-g-3" for="lastCompany">Last Company</label>
                     <div class="ui-g-9">
                       <input type="text" pInputText placeholder="Last Company" id="lastCompany"
                              [(ngModel)]="element.lastCompany" name="lastCompany"
@@ -102,21 +103,41 @@
                   </div>
 
                   <div class="form-group clearfix ui-g">
-                    <label class="label-text ui-g-3">Photo url</label>
+                    <label class="label-text ui-g-3" for="biography_preview">
+                      Biography preview
+                    </label>
                     <div class="ui-g-9">
-                      <input type="text" pInputText placeholder="Photo url" id="photo_url"
-                             [(ngModel)]="element.photo_url" name="photo_url" #photo_url="ngModel">
+                      <textarea pInputTextarea placeholder="Biography preview"
+                                id="biography_preview" [(ngModel)]="element.biography_preview"
+                                maxlength="200" name="biography_preview"
+                                #biography_preview="ngModel"></textarea>
+                    </div>
+                  </div>
+
+                  <div class="form-group clearfix ui-g">
+                    <label class="label-text ui-g-3">Biography</label>
+                    <div class="ui-g-9">
+                      <p-editor [(ngModel)]="element.biography" name="biography"
+                                #biography="ngModel" [style]="{'height':'150px'}"></p-editor>
                     </div>
                   </div>
 
                   <div class="form-group clearfix ui-g">
                     <label class="label-text ui-g-3">Birth date</label>
                     <div class="ui-g-9">
-                      <!--                      <input type="text" pInputText placeholder="Birth date ex. 19/08/1990" id="birthdate" [(ngModel)]="element.birthdate" name="birthdate" #birthdate="ngModel">-->
-                      <p-inputMask inputId="birthdate" mask="99/99/9999"
-                                   placeholder="Birth date ex. 19/08/1990"
-                                   [(ngModel)]="element.birthdate" name="birthdate"
-                                   #birthdate="ngModel"></p-inputMask>
+                      <p-calendar [(ngModel)]="element.birthdate" [monthNavigator]="true"
+                                  [yearNavigator]="true" placeholder="Birth date"
+                                  yearRange="1900:2020" inputId="navigators" name="birthdate"
+                                  #birthdate="ngModel"></p-calendar>
+                    </div>
+                  </div>
+
+                  <div class="form-group clearfix ui-g">
+                    <label class="label-text ui-g-3">Photo</label>
+                    <div class="ui-g-9">
+                      <p-fileUpload (onUpload)="onFileUpload($event)"
+                                    (onSelect)="onFileSelect($event)"
+                                    accept="image/*"></p-fileUpload>
                     </div>
                   </div>
 

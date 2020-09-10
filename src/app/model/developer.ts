@@ -4,6 +4,8 @@ export class Developer {
   public name: string;
   public surname: string;
   public tags: string;
+  public companies: string;
+  public biography_preview: string;
   public biography: string;
   public lastCompany: string;
   public photo_url: string;

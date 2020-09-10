@@ -22,10 +22,10 @@ import {SearchTagsComponent} from './common/search-tags.component';
 import {OutputPrintable} from './pipes/output-printable';
 import {
   CalendarModule,
-  CheckboxModule,
+  CheckboxModule, ChipsModule,
   ConfirmationService,
-  ConfirmDialogModule,
-  InputMaskModule,
+  ConfirmDialogModule, EditorModule, FileUploadModule,
+  InputMaskModule, InputTextareaModule,
   MessageService
 } from 'primeng';
 import {KeycloakService, KeycloakAngularModule} from 'keycloak-angular';
@@ -73,7 +73,11 @@ export function initializer(keycloak: KeycloakService): () => Promise<any> {
     CheckboxModule,
     KeycloakAngularModule,
     CalendarModule,
-    InputMaskModule
+    InputMaskModule,
+    ChipsModule,
+    FileUploadModule,
+    InputTextareaModule,
+    EditorModule
   ],
   providers: [
     MessageService,
