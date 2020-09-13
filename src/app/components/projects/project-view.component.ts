@@ -3,19 +3,21 @@ import {BlogPost} from "../../model/blog.post";
 import {ActivatedRoute, Router} from "@angular/router";
 import {BlogPostService} from "../../service/blog-post.service";
 import {AbstractViewComponent} from "../../common/abstract-view-component";
+import {Project} from "../../model/project";
+import {ProjectService} from "../../service/project.service";
 
 @Component({
-    selector: 'app-blog-post-view',
-    templateUrl: './blog-post-view.component.html'
+    selector: 'app-project-view',
+    templateUrl: './project-view.component.html'
 })
-export class BlogPostViewComponent extends AbstractViewComponent<BlogPost> {
+export class ProjectViewComponent extends AbstractViewComponent<Project> {
 
     constructor(
         router: Router,
-        private blogPostService: BlogPostService,
+        private projectService: ProjectService,
         protected route: ActivatedRoute
     ) {
-        super(router, route, blogPostService, 'blogposts');
+        super(router, route, projectService, 'projects');
     }
 
     getId() {

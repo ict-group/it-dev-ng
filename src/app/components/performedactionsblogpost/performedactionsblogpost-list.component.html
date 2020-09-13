@@ -1,0 +1,71 @@
+<p-overlayPanel #op [dismissable]="true" appendTo="body" styleClass="clearfix">
+    <div class="form-group cleafix">
+        <label for="action_name">Tag name</label>
+        <input id="action_name" [(ngModel)]="service.search.like.uuid" type="text" size="30" pInputText>
+    </div>
+
+    <div class="form-group cleafix">
+        <div class="ui-g">
+            <div class="ui-g-6">
+                <button type="button" pButton class="btn-block ui-button-secondary" label="search" icon="fa fa-search"
+                        (click)="reload(datatable); op.hide()"></button>
+            </div>
+            <div class="ui-g-6">
+                <button type="button" pButton class="btn-block" label="reset" icon="fa fa-search"
+                        (click)="reset(datatable)"></button>
+
+            </div>
+        </div>
+    </div>
+</p-overlayPanel>
+
+<div class="top-wrapper">
+    <div class="ui-g">
+        <div class="ui-g-6">
+            <h1>Performed Action BlogPost</h1>
+        </div>
+    </div>
+</div>
+
+<div class="wrapper">
+    <div class="ui-g">
+        <div class="ui-g-12">
+            <div class="filter-wrapper clearfix">
+                <a (click)="op.toggle($event)" class="btn-filter" appendTo="body">
+                    <i class="fa fa-sliders" aria-hidden="true"></i> Search
+                </a>
+                <app-search-tags [search]="service.search" [labels]="labels"
+                                 (cancel)="reload(datatable)"></app-search-tags>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui-g">
+        <div class="ui-g-12">
+            <p-card>
+                <p-table [value]="model" [lazy]="true" (onLazyLoad)="lazyLoad($event)" [paginator]="true"
+                         [responsive]="true"
+                         [rows]="service.search.pageSize" [totalRecords]="service.listSize" [resizableColumns]="true"
+                         #datatable>
+                    <ng-template pTemplate="header" class="search-filter">
+                        <tr class="sort-header">
+                            <th pResizableColumn [pSortableColumn]="'id'">id
+                                <p-sortIcon [field]="'id'" width="150px"></p-sortIcon>
+                            </th>
+                            <th pResizableColumn [pSortableColumn]="'last_update'">last_update
+                                <p-sortIcon [field]="'last_update'" width="150px"></p-sortIcon>
+                            </th>
+                            <th></th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+                        <tr>
+                            <td class="ui-resizable-column">{{rowData.id}}</td>
+                            <td class="ui-resizable-column">{{rowData.last_update}}</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </p-card>
+        </div>
+    </div>
+</div>

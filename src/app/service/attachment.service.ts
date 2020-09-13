@@ -1,24 +1,25 @@
 import {Injectable} from '@angular/core';
 import {AbstractService} from '../common/abstract-service';
-import {BlogPost} from '../model/blog.post';
 import {HttpClient} from '@angular/common/http';
 import {Search} from '../common/search';
-import {BLOGPOSTS_PATH} from '../constants/constants';
+import {ATTACHMENTS_PATH} from '../constants/constants';
+import {Attachment} from '../model/attachment';
 
 @Injectable({
     providedIn: 'root'
 })
-export class BlogPostService extends AbstractService<BlogPost> {
+export class AttachmentService extends AbstractService<Attachment> {
 
     constructor(http: HttpClient) {
-        super(BLOGPOSTS_PATH, http);
+        super(ATTACHMENTS_PATH, http);
     }
 
-    getId(element: BlogPost) {
+    getId(element: Attachment) {
         return element.uuid;
     }
 
     buildSearch() {
-        this.search = new Search<BlogPost>(BlogPost);
+        this.search = new Search<Attachment>(Attachment);
     }
+
 }

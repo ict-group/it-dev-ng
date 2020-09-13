@@ -1,0 +1,72 @@
+<div class="top-wrapper">
+    <div class="ui-g">
+        <div class="ui-g-6">
+            <h1>Project Details</h1>
+        </div>
+        <div class="ui-g-6">
+            <button pButton type="button" routerLink="/projects" class="pull-right ui-button-primary"
+                    icon="fa fa-chevron-left" label="Back"></button>
+        </div>
+    </div>
+</div>
+
+<div class="wrapper">
+    <div class="ui-g">
+        <div class="ui-g-12">
+
+            <p-tabView>
+                <p-tabPanel header="Project">
+                    <div class="ui-g">
+                        <div class="ui-g-12">
+
+                            <div class="form-group list clearfix">
+                                <div class="ui-g">
+                                    <div class="ui-g-12">
+                                        <label class="label-text ui-g-2">Name</label>
+                                        <div class="ui-g-10">
+                                            <strong>{{element?.name}}</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group list clearfix">
+                                <div class="ui-g">
+                                    <div class="ui-g-12">
+                                        <label class="label-text ui-g-2">Description</label>
+                                        <div class="ui-g-10">
+                                            <strong>{{element?.description}}</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group list clearfix">
+                                <div class="ui-g">
+                                    <div class="ui-g-12">
+                                        <label class="label-text ui-g-2">Tags</label>
+                                        <div class="ui-g-10">
+                                            <strong>{{element?.tags}}</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group list clearfix">
+                                <div class="ui-g">
+                                    <div class="ui-g-12">
+                                        <label class="label-text ui-g-2">Properties</label>
+                                        <div class="ui-g-10">
+                                            <strong>{{element?.properties}}</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </p-tabPanel>
+            </p-tabView>
+
+        </div>
+    </div>
+</div>
