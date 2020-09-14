@@ -22,14 +22,14 @@ export const MANAGER_ROLE = 'manager';
 export const USER_ROLE = 'user';
 
 export const PAGES = [
-    {name: 'Actions', link: '/actions', icon: 'fa fa-file-code-o', style: 'default'},
-    {name: 'Developers', link: '/developers', icon: 'fa fa-file-code-o', style: 'default'},
-    {name: 'Blogposts', link: '/blogposts', icon: 'fa fa-picture-o', style: 'default'},
-    {name: 'Companies', link: '/companies', icon: 'fa fa-address-book', style: 'default'},
-    {name: 'Performed Actions', link: '/performedactions', icon: 'fa fa-bars', style: 'default'},
-    {name: 'Performed Actions Blogpost', link: '/performedactionsblogpost', icon: 'fa fa-circle-o', style: 'default'},
-    {name: 'Projects', link: '/projects', icon: 'fa fa-sticky-note-o', style: 'default'},
-    {name: 'Tags', link: '/tags', icon: 'fa fa-tag', style: 'default'}
+    {name: 'Actions', link: '/actions', icon: 'fa fa-file-code-o', style: 'default', permit: 'ADMIN' || 'MANAGER'},
+    {name: 'Developers', link: '/developers', icon: 'fa fa-file-code-o', style: 'default', permit: 'ANY'},
+    {name: 'Blogposts', link: '/blogposts', icon: 'fa fa-picture-o', style: 'default', permit: 'ANY'},
+    {name: 'Companies', link: '/companies', icon: 'fa fa-address-book', style: 'default', permit: 'ANY'},
+    {name: 'Performed Actions', link: '/performedactions', icon: 'fa fa-bars', style: 'default', permit: 'ADMIN' || 'MANAGER'},
+    {name: 'Performed Actions Blogpost', link: '/performedactionsblogpost', icon: 'fa fa-circle-o', style: 'default', permit: 'ADMIN' || 'MANAGER'},
+    {name: 'Projects', link: '/projects', icon: 'fa fa-sticky-note-o', style: 'default', permit: 'ANY'},
+    {name: 'Tags', link: '/tags', icon: 'fa fa-tag', style: 'default', permit: 'ANY'}
 ];
 
 export const blog_types: SelectItem[] = [

@@ -28,7 +28,6 @@
       <div class="ui-g-6">
         <button type="button" pButton class="btn-block" label="reset" icon="fa fa-search"
                 (click)="reset(datatable)"></button>
-
       </div>
     </div>
   </div>
@@ -39,7 +38,7 @@
     <div class="ui-g-6">
       <h1>Developers</h1>
     </div>
-    <div class="ui-g-6">
+    <div class="ui-g-6" *appPermit="'ADMIN' || 'MANAGER'">
       <button type="button" class="pull-right ui-button-secondary" pButton [routerLink]="['/developers/new']"
               icon="pi pi-plus" label="New"></button>
     </div>
@@ -92,7 +91,7 @@
                 <button type="button" pButton class="ui-button-primary pull-right" icon="fa fa-eye"
                         (click)="view(rowData)"></button>
                 <button type="button" pButton class="ui-button-secondary pull-right" icon="fa fa-pencil"
-                        (click)="edit(rowData)">
+                        (click)="edit(rowData)" *appPermit="'ADMIN' || 'MANAGER'">
                 </button>
               </td>
             </tr>
