@@ -45,7 +45,7 @@ jobs:
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
           task-definition: task-definition.json
-          container-name: it-dev-services
+          container-name: it-dev-ng
           image: docker.pkg.github.com/ict-group/it-dev-ng/it-dev-ng:latest
 
       - name: Deploy Amazon ECS task definition
