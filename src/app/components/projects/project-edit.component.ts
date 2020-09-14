@@ -6,39 +6,55 @@ import {Project} from '../../model/project';
 import {ProjectService} from '../../service/project.service';
 
 @Component({
-    selector: 'app-project-edit',
-    templateUrl: './project-edit.component.html'
+  selector: 'app-project-edit',
+  templateUrl: './project-edit.component.html'
 })
 export class ProjectEditComponent extends AbstractEditComponent<Project> {
 
-    constructor(
-        router: Router,
-        private projectService: ProjectService,
-        protected route: ActivatedRoute,
-        private confirmationService: ConfirmationService
-    ) {
-        super(router, route, projectService, 'projects');
+  properties: any[] = [{name: '', value: ''}];
+
+  constructor(
+      router: Router,
+      private projectService: ProjectService,
+      protected route: ActivatedRoute,
+      private confirmationService: ConfirmationService
+  ) {
+    super(router, route, projectService, 'projects');
+  }
+
+  getId() {
+    return this.element.uuid;
+  }
+
+  createInstance(): Project {
+    return new Project();
+  }
+
+  addProperty() {
+    this.properties.push(
+        {name: '', value: ''}
+    )
+  }
+
+  beforeSave() {
+    if (this.properties) {
+      this.element.properties = this.properties;
     }
 
-    getId() {
-        return this.element.uuid;
-    }
+    this.save()
+  }
 
-    createInstance(): Project {
-        return new Project();
-    }
-
-    public confirmDelete() {
-        this.confirmationService.confirm({
-            message: 'Confermi la eliminazione?',
-            header: 'Attenzione!',
-            icon: 'pi pi-exclamation-triangle',
-            accept: () => {
-                this.delete();
-            },
-            reject: () => {
-            }
-        });
-    }
+  public confirmDelete() {
+    this.confirmationService.confirm({
+      message: 'Confermi la eliminazione?',
+      header: 'Attenzione!',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.delete();
+      },
+      reject: () => {
+      }
+    });
+  }
 
 }
