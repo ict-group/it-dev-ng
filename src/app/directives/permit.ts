@@ -21,9 +21,7 @@ export class PermitDirective {
                 this.prevCondition = false;
                 this.viewContainerRef.clear();
             }
-
             this.roles = Permissions.acls.get(aclName);
-
             this.authenticationService.getUtente().subscribe(
                 utente => {
                     this.checkRoles(utente.ruoli);
