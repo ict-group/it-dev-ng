@@ -15,7 +15,7 @@ export class PermitDirective {
                 private authenticationService: AuthenticationService) {
     }
 
-    @Input() set permit(aclName: string) {
+    @Input() set appPermit(aclName: string) {
         if (this.prevCondition == null || !this.prevCondition) {
             if (true) {
                 this.prevCondition = false;

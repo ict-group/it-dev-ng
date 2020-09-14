@@ -6,7 +6,7 @@
             </a>
         </li>
         <li *ngFor="let page of pages">
-            <a routerLink="{{ page.link }}">
+            <a routerLink="{{ page.link }}" *appPermit="page.permit">
                 <i aria-hidden="true" class="{{ page.icon }}"></i>
                 <span>{{ page.name }}</span>
             </a>

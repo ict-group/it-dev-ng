@@ -44,7 +44,7 @@
       <h1>Blog Posts</h1>
     </div>
     <div class="ui-g-6">
-      <button type="button" class="pull-right ui-button-secondary" pButton
+      <button *appPermit="'ADMIN' || 'MANAGER'" type="button" class="pull-right ui-button-secondary" pButton
               [routerLink]="['/blogposts/new']"
               icon="pi pi-plus" label="New">
       </button>
@@ -103,7 +103,7 @@
               <td class="ui-resizable-column" width="250px">
                 <button type="button" pButton class="ui-button-primary pull-right" icon="fa fa-eye"
                         (click)="view(rowData)"></button>
-                <button type="button" pButton class="ui-button-secondary pull-right"
+                <button *appPermit="'ADMIN' || 'MANAGER'" type="button" pButton class="ui-button-secondary pull-right"
                         icon="fa fa-pencil"
                         (click)="edit(rowData)">
                 </button>
