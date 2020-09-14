@@ -16,7 +16,6 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {CommonModule} from '@angular/common';
-import {MySharedModule} from './modules/myshared.module';
 import {HomepageComponent} from './components/homepage/homepage.component';
 import {SearchTagsComponent} from './common/search-tags.component';
 import {OutputPrintable} from './pipes/output-printable';
@@ -46,6 +45,7 @@ import {ProjectListComponent} from './components/projects/project-list.component
 import {ProjectViewComponent} from './components/projects/project-view.component';
 import {ProjectEditComponent} from './components/projects/project-edit.component';
 import {PerformedactionsblogpostListComponent} from './components/performedactionsblogpost/performedactionsblogpost-list.component';
+import {PermitDirective} from './directives/permit';
 
 export function initializer(keycloak: KeycloakService): () => Promise<any> {
     return (): Promise<any> => keycloak.init(
@@ -76,14 +76,14 @@ export function initializer(keycloak: KeycloakService): () => Promise<any> {
         ProjectListComponent,
         ProjectViewComponent,
         ProjectEditComponent,
-        PerformedactionsblogpostListComponent
+        PerformedactionsblogpostListComponent,
+        PermitDirective
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         CommonModule,
         HttpClientModule,
-        MySharedModule,
         CardModule,
         InputTextModule,
         TableModule,
