@@ -1,6 +1,7 @@
 export class Attachment {
     public uuid: string;
     public name: string;
+    public size: number;
     public s3name: string;
     public creation_date: string;
     public mime_type: string;

@@ -53,18 +53,24 @@
                                     </div>
 
                                     <div class="form-group clearfix ui-g">
-                                        <label class="label-text ui-g-3" for="icon">Icon </label>
+                                        <label class="label-text ui-g-3" for="wkstatus">Icon </label>
                                         <div class="ui-g-9">
-                                            <input type="text" pInputText placeholder="icon" id="icon"
-                                                   [(ngModel)]="element.icon" name="icon" #icon="ngModel">
+
+                                            <p-dropdown id="wkstatus" [options]="iconsItems" required filter="true"
+                                                        [(ngModel)]="element.icon" name="icon" #icon="ngModel">
+                                            </p-dropdown>
+
+
                                         </div>
                                     </div>
 
                                     <div class="form-group clearfix ui-g">
                                         <label class="label-text ui-g-3">Operation to execute</label>
                                         <div class="ui-g-9">
-                                            <input type="text" pInputText placeholder="operation_to_execute" id="operation_to_execute"
-                                                   [(ngModel)]="element.operation_to_execute" name="icon" #operation_to_execute="ngModel">
+                                            <input type="text" pInputText placeholder="operation_to_execute"
+                                                   id="operation_to_execute"
+                                                   [(ngModel)]="element.operation_to_execute" name="icon"
+                                                   #operation_to_execute="ngModel">
                                         </div>
                                     </div>
 

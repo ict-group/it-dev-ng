@@ -1,6 +1,6 @@
 <p-overlayPanel #op [dismissable]="true" appendTo="body" styleClass="clearfix">
     <div class="form-group cleafix">
-        <label for="action_name">Action name</label>
+        <label for="action_name">name</label>
         <input id="action_name" [(ngModel)]="service.search.like.name" type="text" size="30" pInputText>
     </div>
 
@@ -68,7 +68,9 @@
                     <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
                         <tr>
                             <td class="ui-resizable-column">{{rowData.name}}</td>
-                            <td class="ui-resizable-column">{{rowData.icon}}</td>
+                            <td class="ui-resizable-column">
+                                <i class="{{rowData.icon}}"></i> <strong>{{rowData.icon}}</strong>
+                            </td>
                             <td class="ui-resizable-column">{{rowData.operation_to_execute}}</td>
                             <td class="ui-resizable-column" width="250px">
                                 <button type="button" pButton class="ui-button-primary pull-right" icon="fa fa-eye"

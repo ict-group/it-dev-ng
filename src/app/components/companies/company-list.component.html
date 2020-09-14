@@ -1,7 +1,7 @@
 <p-overlayPanel #op [dismissable]="true" appendTo="body" styleClass="clearfix">
     <div class="form-group cleafix">
-        <label for="action_name">Company name</label>
-        <input id="action_name" [(ngModel)]="service.search.like.company" type="text" size="30" pInputText>
+        <label for="action_name">name</label>
+        <input id="action_name" [(ngModel)]="service.search.like.name" type="text" size="30" pInputText>
     </div>
 
     <div class="form-group cleafix">
@@ -49,8 +49,8 @@
                          #datatable>
                     <ng-template pTemplate="header" class="search-filter">
                         <tr class="sort-header">
-                            <th pResizableColumn [pSortableColumn]="'company'">company
-                                <p-sortIcon [field]="'company'" width="150px"></p-sortIcon>
+                            <th pResizableColumn [pSortableColumn]="'name'">name
+                                <p-sortIcon [field]="'name'" width="150px"></p-sortIcon>
                             </th>
                             <th pResizableColumn [pSortableColumn]="'numberOf'">numberOf
                                 <p-sortIcon [field]="'numberOf'" width="150px"></p-sortIcon>
@@ -60,8 +60,8 @@
                     </ng-template>
                     <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
                         <tr>
-                            <td class="ui-resizable-column">{{rowData.company}}</td>
-                            <td class="ui-resizable-column">{{rowData.numberOf}}</td>
+                            <td class="ui-resizable-column">{{rowData.name}}</td>
+                            <td class="ui-resizable-column">{{rowData.number_of}}</td>
                         </tr>
                     </ng-template>
                 </p-table>

@@ -1,17 +1,18 @@
 import {Component} from '@angular/core';
 import {AbstractEditComponent} from '../../common/abstract-edit-component';
-import {Developer} from '../../model/developer';
-import {DeveloperService} from '../../service/developer.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ConfirmationService} from 'primeng';
+import {ConfirmationService, SelectItem} from 'primeng';
 import {Action} from '../../model/action';
 import {ActionService} from '../../service/action.service';
+import {FONT_AWESOME_ICONS} from '../../constants/constants';
 
 @Component({
     selector: 'app-developer-edit',
     templateUrl: './action-edit.component.html'
 })
 export class ActionEditComponent extends AbstractEditComponent<Action> {
+
+    iconsItems: SelectItem[] = FONT_AWESOME_ICONS;
 
     constructor(
         router: Router,

@@ -1,5 +1,5 @@
 import {AbstractService} from './abstract-service';
-import {Router, ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Message} from 'primeng/primeng';
 import {OnInit} from '@angular/core';
 
@@ -7,30 +7,30 @@ export abstract class AbstractEditComponent<T> implements OnInit {
 
     public msgs: Message[] = [];
 
-    public editMode: boolean = false;
+    public editMode = false;
     public element: T = null;
 
-  protected windowHeight: number;
-  protected windowWidth: number;
+    protected windowHeight: number;
+    protected windowWidth: number;
 
     public lang_it = {
-      closeText: 'Chiudi',
-      prevText: '&#x3C;Prec',
-      nextText: 'Succ&#x3E;',
-      currentText: 'Oggi',
-      monthNames: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno',
-        'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'],
-      monthNamesShort: ['Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu',
-        'Lug', 'Ago', 'Set', 'Ott', 'Nov', 'Dic'],
-      dayNames: ['Domenica', 'Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato'],
-      dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab'],
-      dayNamesMin: ['Do', 'Lu', 'Ma', 'Me', 'Gi', 'Ve', 'Sa'],
-      weekHeader: 'Sm',
-      dateFormat: 'dd/mm/yy',
-      firstDayOfWeek: 1,
-      isRTL: false,
-      showMonthAfterYear: false,
-      yearSuffix: ''
+        closeText: 'Chiudi',
+        prevText: '&#x3C;Prec',
+        nextText: 'Succ&#x3E;',
+        currentText: 'Oggi',
+        monthNames: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno',
+            'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'],
+        monthNamesShort: ['Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu',
+            'Lug', 'Ago', 'Set', 'Ott', 'Nov', 'Dic'],
+        dayNames: ['Domenica', 'Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato'],
+        dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab'],
+        dayNamesMin: ['Do', 'Lu', 'Ma', 'Me', 'Gi', 'Ve', 'Sa'],
+        weekHeader: 'Sm',
+        dateFormat: 'dd/mm/yy',
+        firstDayOfWeek: 1,
+        isRTL: false,
+        showMonthAfterYear: false,
+        yearSuffix: ''
     };
 
     constructor(protected router: Router,
@@ -40,16 +40,16 @@ export abstract class AbstractEditComponent<T> implements OnInit {
     }
 
     ngOnInit() {
-        let id: string = this.route.snapshot.params['id'];
+        const id: string = this.route.snapshot.params.id;
         if (id) {
             this.editMode = true;
             this.service.find(id).subscribe(
                 element => {
-                    this.element = <T>element;
+                    this.element = element as T;
                     this.postFind();
                 },
                 error => {
-                    this.addError('Errore nel caricamento dei dati.' + ( error || ''));
+                    this.addError('Errore nel caricamento dei dati.' + (error || ''));
                 }
             );
         } else {
@@ -58,8 +58,8 @@ export abstract class AbstractEditComponent<T> implements OnInit {
             this.postCreate();
         }
 
-      this.windowHeight = (window.innerHeight * 0.98);
-      this.windowWidth = (window.innerWidth * 0.98);
+        this.windowHeight = (window.innerHeight * 0.98);
+        this.windowWidth = (window.innerWidth * 0.98);
     }
 
     postCreate() {
@@ -94,12 +94,12 @@ export abstract class AbstractEditComponent<T> implements OnInit {
         this.service.persist(this.element).subscribe(
             element => {
                 this.addInfo('Salvataggio completato con successo. ');
-                this.element = <T>element;
+                this.element = element as T;
                 this.postSave();
                 this.navigateAfterSave();
             },
             error => {
-                this.addError('Impossibile completare il salvataggio. ' + ( error || ''));
+                this.addError('Impossibile completare il salvataggio. ' + (error || ''));
                 this.saveError();
             }
         );
@@ -118,12 +118,12 @@ export abstract class AbstractEditComponent<T> implements OnInit {
         this.service.update(this.element).subscribe(
             element => {
                 this.addInfo('Modifica completata con successo. ');
-                this.element = <T>element;
+                this.element = element as T;
                 this.postUpdate();
                 this.navigateAfterUpdate();
             },
             error => {
-                this.addError('Impossibile completare la modifica. ' + ( error || ''));
+                this.addError('Impossibile completare la modifica. ' + (error || ''));
                 this.saveError();
             }
         );
@@ -138,7 +138,7 @@ export abstract class AbstractEditComponent<T> implements OnInit {
                 this.navigateAfterDelete();
                 this.addInfo('Eliminazione completata con successo. ');
             }, error => {
-                this.addError('Impossibile completare l\'eliminazione. ' + ( error || ''));
+                this.addError('Impossibile completare l\'eliminazione. ' + (error || ''));
             }
         );
     }
@@ -172,20 +172,20 @@ export abstract class AbstractEditComponent<T> implements OnInit {
 
     abstract getId();
 
-  navigateAfterDelete() {
-    this.router.navigate(['/' + this.path + '/list']);
-  }
+    navigateAfterDelete() {
+        this.router.navigate(['/' + this.path + '/list']);
+    }
 
-  navigateAfterUpdate() {
-    this.router.navigate(['/' + this.path + '/view', this.getId()]);
-  }
+    navigateAfterUpdate() {
+        this.router.navigate(['/' + this.path + '/view', this.getId()]);
+    }
 
-  navigateAfterSave() {
-    this.router.navigate(['/' + this.path + '/view', this.getId()]);
-  }
+    navigateAfterSave() {
+        this.router.navigate(['/' + this.path + '/view', this.getId()]);
+    }
 
-  navigateToList() {
-    this.router.navigate(['/' + this.path + '/list']);
-  }
+    navigateToList() {
+        this.router.navigate(['/' + this.path + '/list']);
+    }
 
 }

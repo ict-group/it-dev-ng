@@ -2,153 +2,158 @@
                  [style]="{width: '50vw'}"></p-confirmDialog>
 
 <div class="top-wrapper" *ngIf="element">
-  <div class="ui-g">
-    <div class="ui-g-6">
-      <h1 *ngIf="element.uuid">Developer Edit</h1>
-      <h1 *ngIf="!element.uuid">New Developer</h1>
+    <div class="ui-g">
+        <div class="ui-g-6">
+            <h1 *ngIf="element.uuid">Developer Edit</h1>
+            <h1 *ngIf="!element.uuid">New Developer</h1>
+        </div>
+        <div class="ui-g-6">
+            <button pButton type="button" class="pull-right ui-button-primary" icon="fa fa-warning"
+                    label="Undo"
+                    (click)="goToList()"></button>
+
+            <ng-container>
+                <button pButton type="button" *ngIf="!element.uuid" (click)="save()" icon="pi pi-save"
+                        [disabled]="!theform.form.valid" label="Save"
+                        class="pull-right ui-button-secondary"></button>
+
+                <button pButton type="button" *ngIf="element.uuid" class="pull-right ui-button-secondary"
+                        icon="fa fa-save"
+                        [disabled]="!theform.form.valid" label="Update" (click)="update()"></button>
+
+                <button pButton type="button" *ngIf="element.uuid" class="pull-right ui-button-danger"
+                        icon="fa fa-trash"
+                        [disabled]="!theform.form.valid" label="Delete" (click)="confirmDelete()"></button>
+            </ng-container>
+        </div>
     </div>
-    <div class="ui-g-6">
-      <button pButton type="button" class="pull-right ui-button-primary" icon="fa fa-warning"
-              label="Undo"
-              (click)="goToList()"></button>
-
-      <ng-container>
-        <button pButton type="button" *ngIf="!element.uuid" (click)="save()" icon="pi pi-save"
-                [disabled]="!theform.form.valid" label="Save"
-                class="pull-right ui-button-secondary"></button>
-
-        <button pButton type="button" *ngIf="element.uuid" class="pull-right ui-button-secondary"
-                icon="fa fa-save"
-                [disabled]="!theform.form.valid" label="Update" (click)="update()"></button>
-
-        <button pButton type="button" *ngIf="element.uuid" class="pull-right ui-button-danger"
-                icon="fa fa-trash"
-                [disabled]="!theform.form.valid" label="Delete" (click)="confirmDelete()"></button>
-      </ng-container>
-    </div>
-  </div>
 </div>
 
 <div class="wrapper">
-  <div class="ui-g">
-    <div class="ui-g-12">
+    <div class="ui-g">
+        <div class="ui-g-12">
 
-      <form #theform="ngForm">
-        <p-tabView *ngIf="element">
-          <p-tabPanel header="Developer Configuration">
-            <div class="ui-g">
-              <div class="ui-g-12 clearfix">
-                <div class="ui-g-12">
-                  <div class="form-group clearfix ui-g">
-                    <label class="label-text ui-g-3" for="username">Username (*)</label>
-                    <div class="ui-g-9">
-                      <input type="text" pInputText placeholder="Username" id="username" required
-                             [(ngModel)]="element.username" name="username" #username="ngModel">
+            <form #theform="ngForm">
+                <p-tabView *ngIf="element">
+                    <p-tabPanel header="Developer Configuration">
+                        <div class="ui-g">
+                            <div class="ui-g-12 clearfix">
+                                <div class="ui-g-12">
+                                    <div class="form-group clearfix ui-g">
+                                        <label class="label-text ui-g-3" for="username">Username (*)</label>
+                                        <div class="ui-g-9">
+                                            <input type="text" pInputText placeholder="Username" id="username" required
+                                                   [(ngModel)]="element.username" name="username" #username="ngModel">
 
-                      <div [hidden]="username.valid || username.pristine"
-                           class="alert alert-danger">
-                        Username is required!
-                      </div>
-                    </div>
-                  </div>
+                                            <div [hidden]="username.valid || username.pristine"
+                                                 class="alert alert-danger">
+                                                Username is required!
+                                            </div>
+                                        </div>
+                                    </div>
 
-                  <div class="form-group clearfix ui-g">
-                    <label class="label-text ui-g-3" for="name">Name (*)</label>
-                    <div class="ui-g-9">
-                      <input type="text" pInputText placeholder="Name" id="name" required
-                             [(ngModel)]="element.name" name="nome" #name="ngModel">
+                                    <div class="form-group clearfix ui-g">
+                                        <label class="label-text ui-g-3" for="name">Name (*)</label>
+                                        <div class="ui-g-9">
+                                            <input type="text" pInputText placeholder="Name" id="name" required
+                                                   [(ngModel)]="element.name" name="nome" #name="ngModel">
 
-                      <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
-                        Name is required!
-                      </div>
-                    </div>
-                  </div>
+                                            <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+                                                Name is required!
+                                            </div>
+                                        </div>
+                                    </div>
 
-                  <div class="form-group clearfix ui-g">
-                    <label class="label-text ui-g-3" for="surname">Surname (*)</label>
-                    <div class="ui-g-9">
-                      <input type="text" pInputText placeholder="Surname" id="surname" required
-                             [(ngModel)]="element.surname" name="surname" #surname="ngModel">
+                                    <div class="form-group clearfix ui-g">
+                                        <label class="label-text ui-g-3" for="surname">Surname (*)</label>
+                                        <div class="ui-g-9">
+                                            <input type="text" pInputText placeholder="Surname" id="surname" required
+                                                   [(ngModel)]="element.surname" name="surname" #surname="ngModel">
 
-                      <div [hidden]="surname.valid || surname.pristine" class="alert alert-danger">
-                        Surname is required!
-                      </div>
-                    </div>
-                  </div>
+                                            <div [hidden]="surname.valid || surname.pristine"
+                                                 class="alert alert-danger">
+                                                Surname is required!
+                                            </div>
+                                        </div>
+                                    </div>
 
-                  <div class="form-group clearfix ui-g">
-                    <label class="label-text ui-g-3">Tags</label>
-                    <div class="ui-g-9">
-                      <p-chips placeholder="Tags" id="tags" [(ngModel)]="element.tags" separator=","
-                               name="tags" #tags="ngModel"></p-chips>
-                    </div>
-                  </div>
+                                    <div class="form-group clearfix ui-g">
+                                        <label class="label-text ui-g-3">Tags</label>
+                                        <div class="ui-g-9">
+                                            <p-chips placeholder="Tags" id="tags" [(ngModel)]="tagsArray"
+                                                     name="tags" #tags="ngModel"></p-chips>
+                                        </div>
+                                    </div>
 
-                  <div class="form-group clearfix ui-g">
-                    <label class="label-text ui-g-3">Companies</label>
-                    <div class="ui-g-9">
-                      <p-chips placeholder="Companies" id="companies"
-                               [(ngModel)]="element.companies" separator=";"
-                               name="companies" #companies="ngModel"></p-chips>
-                    </div>
-                  </div>
+                                    <div class="form-group clearfix ui-g">
+                                        <label class="label-text ui-g-3">Companies</label>
+                                        <div class="ui-g-9">
+                                            <p-chips placeholder="Companies" id="companies"
+                                                     [(ngModel)]="companiesArray"
+                                                     name="companies" #companies="ngModel"></p-chips>
+                                        </div>
+                                    </div>
 
-                  <div class="form-group clearfix ui-g">
-                    <label class="label-text ui-g-3" for="lastCompany">Last Company</label>
-                    <div class="ui-g-9">
-                      <input type="text" pInputText placeholder="Last Company" id="lastCompany"
-                             [(ngModel)]="element.lastCompany" name="lastCompany"
-                             #lastCompany="ngModel">
-                    </div>
-                  </div>
+                                    <div class="form-group clearfix ui-g">
+                                        <label class="label-text ui-g-3" for="lastCompany">Last Company</label>
+                                        <div class="ui-g-9">
+                                            <input type="text" pInputText placeholder="Last Company" id="lastCompany"
+                                                   [(ngModel)]="element.lastCompany" name="lastCompany"
+                                                   #lastCompany="ngModel">
+                                        </div>
+                                    </div>
 
-                  <div class="form-group clearfix ui-g">
-                    <label class="label-text ui-g-3" for="biography_preview">
-                      Biography preview
-                    </label>
-                    <div class="ui-g-9">
-                      <textarea pInputTextarea placeholder="Biography preview"
+                                    <div class="form-group clearfix ui-g">
+                                        <label class="label-text ui-g-3" for="biography_preview">
+                                            Biography preview
+                                        </label>
+                                        <div class="ui-g-9">
+                                <textarea pInputTextarea placeholder="Biography preview"
                                 id="biography_preview" [(ngModel)]="element.biography_preview"
                                 maxlength="200" name="biography_preview"
                                 #biography_preview="ngModel"></textarea>
-                    </div>
-                  </div>
+                                        </div>
+                                    </div>
 
-                  <div class="form-group clearfix ui-g">
-                    <label class="label-text ui-g-3">Biography</label>
-                    <div class="ui-g-9">
-                      <p-editor [(ngModel)]="element.biography" name="biography"
-                                #biography="ngModel" [style]="{'height':'150px'}"></p-editor>
-                    </div>
-                  </div>
+                                    <div class="form-group clearfix ui-g">
+                                        <label class="label-text ui-g-3">Biography</label>
+                                        <div class="ui-g-9">
+                                            <p-editor [(ngModel)]="element.biography" name="biography"
+                                                      #biography="ngModel" [style]="{'height':'150px'}"></p-editor>
+                                        </div>
+                                    </div>
 
-                  <div class="form-group clearfix ui-g">
-                    <label class="label-text ui-g-3">Birth date</label>
-                    <div class="ui-g-9">
-                      <p-calendar [(ngModel)]="element.birthdate" [monthNavigator]="true"
-                                  [yearNavigator]="true" placeholder="Birth date"
-                                  yearRange="1900:2020" inputId="navigators" name="birthdate"
-                                  #birthdate="ngModel"></p-calendar>
-                    </div>
-                  </div>
+                                    <div class="form-group clearfix ui-g">
+                                        <label class="label-text ui-g-3">Birth date</label>
+                                        <div class="ui-g-9">
+                                            <p-calendar [(ngModel)]="element.birthdate" [monthNavigator]="true"
+                                                        [yearNavigator]="true" placeholder="Birth date"
+                                                        yearRange="1900:2020" inputId="navigators" name="birthdate"
+                                                        #birthdate="ngModel"></p-calendar>
+                                        </div>
+                                    </div>
 
-                  <div class="form-group clearfix ui-g">
-                    <label class="label-text ui-g-3">Photo</label>
-                    <div class="ui-g-9">
-                      <p-fileUpload (onUpload)="onFileUpload($event)"
-                                    (onSelect)="onFileSelect($event)"
-                                    accept="image/*"></p-fileUpload>
-                    </div>
-                  </div>
+                                    <div class="form-group clearfix ui-g">
+                                        <label class="label-text ui-g-3">Photo</label>
+                                        <div class="ui-g-9">
+                                            <p-fileUpload #fileInput
+                                                          mode="basic"
+                                                          name="myfile[]" [multiple]="false"
+                                                          (onUpload)="onFileUpload($event)"
+                                                          (onSelect)="onFileSelect($event)"
+                                                          accept="image/*"></p-fileUpload>
+                                            <img *ngIf="element.photo_url" [src]="element.photo_url"/>
+                                        </div>
+                                    </div>
 
-                  {{element | json}}
-                </div>
-              </div>
-            </div>
-          </p-tabPanel>
-        </p-tabView>
-      </form>
+                                    {{element | json}}
+                                </div>
+                            </div>
+                        </div>
+                    </p-tabPanel>
+                </p-tabView>
+            </form>
 
+        </div>
     </div>
-  </div>
 </div>
