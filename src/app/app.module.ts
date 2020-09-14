@@ -48,7 +48,11 @@ import {ProjectEditComponent} from './components/projects/project-edit.component
 import {PerformedactionsblogpostListComponent} from './components/performedactionsblogpost/performedactionsblogpost-list.component';
 
 export function initializer(keycloak: KeycloakService): () => Promise<any> {
-    return (): Promise<any> => keycloak.init({config: keycloakConfig});
+    return (): Promise<any> => keycloak.init(
+        {
+            config: keycloakConfig,
+            initOptions: {onLoad: 'login-required', checkLoginIframe: false}
+        });
 }
 
 @NgModule({
