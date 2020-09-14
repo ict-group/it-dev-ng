@@ -1,34 +1,48 @@
 <div id="mySidebar" class="sidebar open">
-  <ul>
-    <li>
-      <a routerLink="/"
-        ><i aria-hidden="true" class="fa fa-home"></i> <span>Home</span></a
-      >
-    </li>
-    <li *ngFor="let page of pages">
-      <a routerLink="{{ page.link }}"
-        ><i aria-hidden="true" class="{{ page.icon }}"></i>
-        <span>{{ page.name }}</span></a
-      >
-    </li>
-    <li (click)="logout()">
-      <a *ngIf="true"
-        ><i aria-hidden="true" class="fa fa-sign-out"></i>
-        <span> Logout</span></a
-      >
-    </li>
-  </ul>
+    <ul>
+        <li>
+            <a routerLink="/">
+                <i aria-hidden="true" class="fa fa-home"></i> <span>Home</span>
+            </a>
+        </li>
+        <li *ngFor="let page of pages">
+            <a routerLink="{{ page.link }}">
+                <i aria-hidden="true" class="{{ page.icon }}"></i>
+                <span>{{ page.name }}</span>
+            </a>
+        </li>
+        <li (click)="logout()">
+            <a *ngIf="true"
+            ><i aria-hidden="true" class="fa fa-sign-out"></i>
+                <span> Logout</span></a
+            >
+        </li>
+    </ul>
 </div>
 
 <div class="navbar-top">
-  <div class="openbtn" onclick="toggleNav()">
-    <i class="fa fa-bars" aria-hidden="true"></i>
-  </div>
-  <div class="logo-wrapper">
-    <a routerLink="/"> <img src="assets/images/logo.svg" /></a>
-  </div>
+    <div class="openbtn" onclick="toggleNav()">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+    </div>
+    <div class="logo-wrapper">
+        <a routerLink="/"> <img src="assets/images/logo.svg"/></a>
+    </div>
+    <div class="title-wrapper">
+
+    </div>
+    <ul class="user-menu">
+        <li>
+            <a>
+                <span class="profile-name">{{username}}</span>
+                <i class="material-icons ui-icon-keyboard-arrow-down"></i>
+            </a>
+        </li>
+        <li role="menuitem">
+            <strong>{{primaryRole}}</strong>
+        </li>
+    </ul>
 </div>
 
 <div id="main" class="close">
-  <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
 </div>
