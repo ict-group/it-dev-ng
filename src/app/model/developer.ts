@@ -1,3 +1,5 @@
+import {PropertyValue} from './property.value';
+
 export class Developer {
   public uuid: string;
   public username: string;
@@ -11,6 +13,7 @@ export class Developer {
   public photo_url: string;
   public birthdate: string;
   public creation_date: string;
+  public properties: PropertyValue[];
 
   constructor() {
   }

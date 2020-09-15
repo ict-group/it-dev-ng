@@ -4,7 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationService} from 'primeng';
 import {Project} from '../../model/project';
 import {ProjectService} from '../../service/project.service';
-import {PropertyValue} from "../../model/property.value";
+import {PropertyValue} from '../../model/property.value';
 
 @Component({
     selector: 'app-project-edit',
@@ -12,6 +12,7 @@ import {PropertyValue} from "../../model/property.value";
 })
 export class ProjectEditComponent extends AbstractEditComponent<Project> {
 
+    tagsArray: string[];
     public properties: PropertyValue[] = [];
 
     constructor(
@@ -23,10 +24,23 @@ export class ProjectEditComponent extends AbstractEditComponent<Project> {
         super(router, route, projectService, 'projects');
     }
 
-    postFind() {
+    initArrays(){
+        if (this.element.tags){
+            this.tagsArray = this.element.tags.split(',');
+        }
         if (this.element.properties) {
             this.properties = this.element.properties;
         }
+    }
+
+    reverseArray(){
+        if (this.tagsArray){
+            this.element.tags = this.tagsArray.join(',');
+        }
+    }
+
+    postFind() {
+        this.initArrays();
     }
 
     getId() {
@@ -47,24 +61,24 @@ export class ProjectEditComponent extends AbstractEditComponent<Project> {
         delete this.properties[index];
     }
 
-
     addProperty() {
         const pro: PropertyValue = new PropertyValue();
         this.properties = [...this.properties, pro];
     }
 
-
     preUpdate(): boolean {
-        this.adjiustProperties();
+        this.reverseArray();
+        this.adjustProperties();
         return super.preUpdate();
     }
 
     preSave(): boolean {
-        this.adjiustProperties();
+        this.reverseArray();
+        this.adjustProperties();
         return super.preSave();
     }
 
-    adjiustProperties() {
+    adjustProperties() {
         if (this.properties) {
             this.element.properties = this.properties;
         }
@@ -85,5 +99,4 @@ export class ProjectEditComponent extends AbstractEditComponent<Project> {
             }
         });
     }
-
 }
