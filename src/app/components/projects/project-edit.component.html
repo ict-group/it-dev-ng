@@ -55,7 +55,7 @@
                                     <div class="form-group clearfix ui-g">
                                         <label class="label-text ui-g-3">Description</label>
                                         <div class="ui-g-9">
-                                            <input type="text" pInputText placeholder="Title" id="title"
+                                            <input type="text" pInputText placeholder="Description " id="description"
                                                    [(ngModel)]="element.description"
                                                    name="description" #description="ngModel">
                                         </div>
@@ -64,8 +64,8 @@
                                     <div class="form-group clearfix ui-g">
                                         <label class="label-text ui-g-3">Tags</label>
                                         <div class="ui-g-9">
-                                            <input type="text" pInputText placeholder="Tags" id="tags"
-                                                   [(ngModel)]="element.tags" name="tags" #tags="ngModel">
+                                            <p-chips placeholder="Tags" id="tags" [(ngModel)]="tagsArray"
+                                                     name="tags" #tags="ngModel"></p-chips>
                                         </div>
                                     </div>
 
@@ -129,7 +129,7 @@
 
                                     </div>
 
-                                    {{properties | json}}
+                                    {{element | json}}
                                 </div>
                             </div>
                         </div>
