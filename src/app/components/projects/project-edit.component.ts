@@ -4,57 +4,86 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationService} from 'primeng';
 import {Project} from '../../model/project';
 import {ProjectService} from '../../service/project.service';
+import {PropertyValue} from "../../model/property.value";
 
 @Component({
-  selector: 'app-project-edit',
-  templateUrl: './project-edit.component.html'
+    selector: 'app-project-edit',
+    templateUrl: './project-edit.component.html'
 })
 export class ProjectEditComponent extends AbstractEditComponent<Project> {
 
-  properties: any[] = [{name: '', value: ''}];
+    public properties: PropertyValue[] = [];
 
-  constructor(
-      router: Router,
-      private projectService: ProjectService,
-      protected route: ActivatedRoute,
-      private confirmationService: ConfirmationService
-  ) {
-    super(router, route, projectService, 'projects');
-  }
-
-  getId() {
-    return this.element.uuid;
-  }
-
-  createInstance(): Project {
-    return new Project();
-  }
-
-  addProperty() {
-    this.properties.push(
-        {name: '', value: ''}
-    )
-  }
-
-  beforeSave() {
-    if (this.properties) {
-      this.element.properties = this.properties;
+    constructor(
+        router: Router,
+        private projectService: ProjectService,
+        protected route: ActivatedRoute,
+        private confirmationService: ConfirmationService
+    ) {
+        super(router, route, projectService, 'projects');
     }
 
-    this.save()
-  }
+    postFind() {
+        if (this.element.properties) {
+            this.properties = this.element.properties;
+        }
+    }
 
-  public confirmDelete() {
-    this.confirmationService.confirm({
-      message: 'Confermi la eliminazione?',
-      header: 'Attenzione!',
-      icon: 'pi pi-exclamation-triangle',
-      accept: () => {
-        this.delete();
-      },
-      reject: () => {
-      }
-    });
-  }
+    getId() {
+        return this.element.uuid;
+    }
+
+    createInstance(): Project {
+        return new Project();
+    }
+
+    onRowEditInit(propertyValue: PropertyValue) {
+    }
+
+    onRowEditSave(propertyValue: PropertyValue) {
+    }
+
+    onRowEditCancel(index: number) {
+        delete this.properties[index];
+    }
+
+
+    addProperty() {
+        const pro: PropertyValue = new PropertyValue();
+        this.properties = [...this.properties, pro];
+    }
+
+
+    preUpdate(): boolean {
+        this.adjiustProperties();
+        return super.preUpdate();
+    }
+
+    preSave(): boolean {
+        this.adjiustProperties();
+        return super.preSave();
+    }
+
+    adjiustProperties() {
+        if (this.properties) {
+            this.element.properties = this.properties;
+        }
+        this.service.update(this.element).subscribe(
+            result => console.log(result)
+        );
+    }
+
+    public confirmDelete() {
+        this.confirmationService.confirm({
+            message: 'Confermi la eliminazione?',
+            header: 'Attenzione!',
+            icon: 'pi pi-exclamation-triangle',
+            accept: () => {
+                this.delete();
+            },
+            reject: () => {
+            }
+        });
+    }
 
 }
