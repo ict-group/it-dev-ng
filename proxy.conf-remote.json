@@ -2,7 +2,7 @@
   "/api/v1": {
     "target": "http://api.it-it.dev",
     "secure": false,
-    "changeOrigin": true,
+    "changeOrigin": false,
     "logLevel": "debug"
   }
 }

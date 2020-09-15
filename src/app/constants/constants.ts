@@ -1,5 +1,5 @@
 import {environment} from '../../environments/environment';
-import {SelectItem} from "primeng";
+import {SelectItem} from 'primeng';
 
 export const API_PATH = environment.apiUrl + '/api/v1';
 export const ATTACHMENTS_PATH = API_PATH + '/attachments';
@@ -32,7 +32,7 @@ export const PAGES = [
     {name: 'Tags', link: '/tags', icon: 'fa fa-tag', style: 'default', permit: 'ANY'}
 ];
 
-export const blog_types: SelectItem[] = [
+export const BLOG_TYPES: SelectItem[] = [
     {label: '...', value: null},
     {label: 'INTERVIEWS', value: 'INTERVIEWSO'},
     {label: 'CHE NE PENSI', value: 'CHE NE PENSI'},

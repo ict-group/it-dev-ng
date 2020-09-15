@@ -4,7 +4,7 @@ import {BlogPost} from '../../model/blog.post';
 import {BlogPostService} from '../../service/blog-post.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationService, FileUpload, SelectItem} from 'primeng';
-import {blog_types} from '../../constants/constants';
+import {BLOG_TYPES} from '../../constants/constants';
 import {DeveloperService} from '../../service/developer.service';
 import {Attachment} from '../../model/attachment';
 import {AttachmentService} from '../../service/attachment.service';
@@ -29,7 +29,7 @@ export class BlogPostEditComponent extends AbstractEditComponent<BlogPost> {
         private confirmationService: ConfirmationService
     ) {
         super(router, route, blogPostService, 'blogposts');
-        this.types = blog_types;
+        this.types = BLOG_TYPES;
         this.developerService.getAllList().subscribe(
             developer => {
                 for (const dev of developer) {
