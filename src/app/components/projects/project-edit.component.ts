@@ -99,5 +99,4 @@ export class ProjectEditComponent extends AbstractEditComponent<Project> {
             }
         });
     }
-
 }

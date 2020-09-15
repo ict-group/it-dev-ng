@@ -7,6 +7,8 @@ import {ConfirmationService, FileUpload} from 'primeng';
 import {Attachment} from '../../model/attachment';
 import {AttachmentService} from '../../service/attachment.service';
 import {ATTACHMENTS_DOWNLOAD_PATH} from '../../constants/constants';
+import {PropertyValue} from '../../model/property.value';
+import {log} from 'util';
 
 @Component({
     selector: 'app-developer-edit',
@@ -16,6 +18,7 @@ export class DeveloperEditComponent extends AbstractEditComponent<Developer> {
 
     tagsArray: string[];
     companiesArray: string[];
+    public properties: PropertyValue[] = [];
     @ViewChild('fileInput', {static: false}) fileInput: FileUpload;
 
     constructor(
@@ -46,12 +49,9 @@ export class DeveloperEditComponent extends AbstractEditComponent<Developer> {
         }
     }
 
-
     postFind() {
         this.initArrays();
     }
-
-
 
     getId() {
         return this.element.uuid;
@@ -82,17 +82,17 @@ export class DeveloperEditComponent extends AbstractEditComponent<Developer> {
         console.log(event.files[0]);
     }
 
-
     preSave(): boolean {
         this.reverseArray();
+        this.adjustProperties();
         return true;
     }
 
     preUpdate(): boolean {
         this.reverseArray();
+        this.adjustProperties();
         return true;
     }
-
 
     postSave() {
         this.upload();
@@ -100,6 +100,30 @@ export class DeveloperEditComponent extends AbstractEditComponent<Developer> {
 
     postUpdate() {
         this.upload();
+    }
+
+    onRowEditInit(propertyValue: PropertyValue) {
+    }
+
+    onRowEditSave(propertyValue: PropertyValue) {
+    }
+
+    onRowEditCancel(index: number) {
+        delete this.properties[index];
+    }
+
+    addProperty() {
+        const prop: PropertyValue = new PropertyValue();
+        this.properties = [...this.properties, prop];
+    }
+
+    adjustProperties() {
+        if (this.properties){
+            this.element.properties = this.properties;
+        }
+        this.service.update(this.element).subscribe(
+             result => console.log(result)
+        );
     }
 
     upload() {
