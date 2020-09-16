@@ -112,7 +112,7 @@
                                     <div class="ui-g-12">
                                         <label class="label-text ui-g-2">Insert date</label>
                                         <div class="ui-g-10">
-                                            <strong class="pre clearfix">{{element?.insert_date}}</strong>
+                                            <strong class="pre clearfix">{{element?.insert_date  | outputdatetime: false}}</strong>
                                         </div>
                                     </div>
                                 </div>
@@ -123,7 +123,7 @@
                                     <div class="ui-g-12">
                                         <label class="label-text ui-g-2">Update date</label>
                                         <div class="ui-g-10">
-                                            <strong class="pre clearfix">{{element?.update_date}}</strong>
+                                            <strong class="pre clearfix">{{element?.update_date  | outputdatetime: false}}</strong>
                                         </div>
                                     </div>
                                 </div>
@@ -133,7 +133,7 @@
                             <div class="form-group clearfix">
                                 <div class="ui-g">
                                     <div class="ui-g-12">
-                                        <label class="label-text ui-g-2">Photo</label>
+                                        <label class="label-text ui-g-2">Photos</label>
                                         <div class="ui-g-10">
                                             <li *ngFor="let item of list; let i = index">
                                                 <img [src]="item.s3_url"/>

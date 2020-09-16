@@ -46,6 +46,7 @@ import {ProjectViewComponent} from './components/projects/project-view.component
 import {ProjectEditComponent} from './components/projects/project-edit.component';
 import {PerformedactionsblogpostListComponent} from './components/performedactionsblogpost/performedactionsblogpost-list.component';
 import {PermitDirective} from './directives/permit';
+import {OutputDateTimePipe} from "./pipes/output-date-time.pipe";
 
 export function initializer(keycloak: KeycloakService): () => Promise<any> {
     return (): Promise<any> => keycloak.init(
@@ -77,7 +78,8 @@ export function initializer(keycloak: KeycloakService): () => Promise<any> {
         ProjectViewComponent,
         ProjectEditComponent,
         PerformedactionsblogpostListComponent,
-        PermitDirective
+        PermitDirective,
+        OutputDateTimePipe
     ],
     imports: [
         BrowserModule,

@@ -68,10 +68,10 @@
                     <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
                         <tr>
                             <td class="ui-resizable-column">{{rowData.id}}</td>
-                            <td class="ui-resizable-column">{{rowData.last_update}}</td>
+                            <td class="ui-resizable-column">{{rowData.last_update | outputdatetime: false  }}</td>
                             <td class="ui-resizable-column">
                                 <ul>
-                                    <li *ngFor="let item of rowData.actions">{{item.action}} - {{item.numberOf}}</li>
+                                    <li *ngFor="let item of rowData.actions; index as i;">{{item.action}} - {{item.numberOf}}</li>
                                 </ul>
                             </td>
                         </tr>

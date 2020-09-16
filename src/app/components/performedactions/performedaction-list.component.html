@@ -67,8 +67,8 @@
                         <tr>
                             <td class="ui-resizable-column">{{rowData.action}}</td>
                             <td class="ui-resizable-column">{{rowData.blogpost_uuid}}</td>
-                            <td class="ui-resizable-column">{{rowData.creation_date}}</td>
-                            <td class="ui-resizable-column">{{rowData.working_date}}</td>
+                            <td class="ui-resizable-column">{{rowData.creation_date | outputdatetime: false }}</td>
+                            <td class="ui-resizable-column">{{rowData.working_date | outputdatetime: false }}</td>
                         </tr>
                     </ng-template>
                 </p-table>

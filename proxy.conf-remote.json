@@ -1,6 +1,6 @@
 {
   "/api/v1": {
-    "target": "http://api.it-it.dev",
+    "target": "https://api.it-it.dev",
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug"
