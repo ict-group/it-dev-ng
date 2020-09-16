@@ -82,9 +82,11 @@ export class ProjectEditComponent extends AbstractEditComponent<Project> {
         if (this.properties) {
             this.element.properties = this.properties;
         }
-        this.service.update(this.element).subscribe(
-            result => console.log(result)
-        );
+
+        // I commented this method because it was duplicating the post
+        // this.service.update(this.element).subscribe(
+        //     result => console.log(result)
+        // );
     }
 
     public confirmDelete() {
