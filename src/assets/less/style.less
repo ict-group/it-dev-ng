@@ -26,7 +26,6 @@ code {
   &.no-wrap {
     word-wrap: normal !important;
     white-space: normal !important;
-
   }
 
   &.pre {
@@ -36,7 +35,7 @@ code {
 
 body {
   background-color: @lightgrey;
-  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-size: 15px;
   color: @coop_color_3;
   margin: 0px;
@@ -57,7 +56,6 @@ body {
     &.list {
       border-bottom: 1px solid #ccc;
     }
-
   }
 
   .pull-right {
@@ -120,7 +118,7 @@ body {
 
     ul.ultima-menu li.active-menuitem > a {
       color: @white;
-      background-color: @coop_color_2
+      background-color: @coop_color_2;
     }
 
     ul.ultima-menu li.active-menuitem > a.active-menuitem-routerlink {
@@ -183,7 +181,7 @@ body {
             float: left;
             display: none !important;
             visibility: hidden !important;
-            transition: visibility .1s;
+            transition: visibility 0.1s;
           }
 
           &:hover {
@@ -197,7 +195,6 @@ body {
             text-align: center;
             line-height: 54px !important;
             color: @white;
-
           }
         }
 
@@ -267,6 +264,25 @@ body {
     z-index: 100;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
 
+    .user-menu {
+      float: right;
+      list-style-type: none;
+      margin-top: 20px;
+      margin-right: 16px;
+
+      li {
+        float: left;
+        list-style: none;
+        margin: 0px 6px;
+        font-size: 14px;
+
+        .profile-name {
+          color: @coop_color_3;
+          font-weight: 600;
+        }
+      }
+    }
+
     .title-wrapper {
       float: left;
       margin-left: 20px;
@@ -307,7 +323,6 @@ body {
       img {
         height: 40px;
       }
-    ;
     }
   }
 
@@ -346,7 +361,7 @@ body {
   }
 
   #main {
-    transition: margin-left .1s;
+    transition: margin-left 0.1s;
     padding: 20px;
     margin-left: 60px;
     padding-top: 60px;
@@ -412,7 +427,6 @@ body {
             margin: 0px;
             padding: 10px 0px;
           }
-
         }
 
         .menu-item-icon {
@@ -536,4 +550,3 @@ body {
 
   /* close commented backslash hack */
 }
-
